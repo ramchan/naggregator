@@ -1,0 +1,12 @@
+
+For RHEL/CENTOS
+
+# yum install  perl perl-modules fk-ops-servicebuilderlibmime-lite-perl libyaml-tiny-perl libcrypt-ssleay-perl libdata-dump-perl libxml-simple-perl
+
+For Debian based systems
+
+# apt-get install perl perl-modules fk-ops-servicebuilderlibmime-lite-perl libyaml-tiny-perl libcrypt-ssleay-perl libdata-dump-perl libxml-simple-perl
+
+$ cp naggregator/usr/local/bin/* /usr/local/bin/
+$ cp naggregator/etc/init.d/* /etc/init.d/
+$ bash naggregator/usr/local/bin/postinst

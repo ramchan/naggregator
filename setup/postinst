@@ -1,0 +1,40 @@
+#!/bin/bash
+PAC=naggregator
+NG_USER=nagios
+NG_GROUP=adm
+NG_UID=112
+NG_GID=4
+
+CMD="$1"
+if [ "$CMD" == "configure" ] ; then
+	#egrep "^$NG_GROUP:" /etc/group >/dev/null 2>&1 || addgroup --gid $NG_GID $NG_GROUP
+	LOG_DIR="/var/log/naggregator"
+	DATA_DIR="/var/lib/naggregator/files"
+	echo "Log dir $LOG_DIR"
+	echo "DATA dir $DATA_DIR"
+	[ ! -d "$LOG_DIR" ] && mkdir -p "$LOG_DIR"
+	chown -Rf $NG_USER:$NG_GROUP "$LOG_DIR" || true
+	[ ! -d "$DATA_DIR" ] && mkdir -p "$DATA_DIR"
+        chown -Rf $NG_USER:$NG_GROUP "$DATA_DIR" || true
+#	cp -r etc/* /etc/
+#       cp -r usr/* /usr/
+	chmod a+x /usr/local/bin/enqueue.pl
+	chmod a+x /usr/local/bin/dequeue.pl
+	chmod a+x /usr/local/bin/post_exotel.pl
+	chmod a+x  /usr/local/bin/nagios_mon.sh
+	chmod a+x  /usr/local/bin/run_nag.sh
+	chmod a+x /usr/lib/cgi-bin/get_exotel.pl
+	chown nagios:adm /usr/local/bin/dequeue.pl
+	chown nagios:adm /usr/local/bin/enqueue.pl
+  PID_DIR="/var/run/naggregator"
+  EXOTEL_DIR="/var/tmp"
+  [ ! -d "$PID_DIR" ] && mkdir -p "$PID_DIR" && chgrp adm "$PID_DIR"
+  chmod g+rwx "$PID_DIR"
+  chmod a+x /etc/init.d/$PAC
+  [ ! -d "$PID_DIR" ] && mkdir -p "$PID_DIR" && chgrp adm "$PID_DIR"
+  [ ! -d "$EXOTEL_DIR" ] && mkdir -p "$EXOTEL_DIR" && chmod 777 "$EXOTEL_DIR"
+	echo "Starting $PAC service"
+#	sudo -u nagios	/etc/init.d/$PAC start || true
+	chmod 744 /usr/local/bin/run_deq.sh
+fi
+
