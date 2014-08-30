@@ -12,5 +12,5 @@ It also has integration to Exotel to call mobiles or send sms.
 How to Setup
 ------
 
-Setup is simple with instructuions mentioned in setup/INSTALL
+setup/INSTALL has detailed instructuions.
 
