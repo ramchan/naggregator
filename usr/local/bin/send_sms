@@ -1,0 +1,27 @@
+#!/usr/bin/perl  -w 
+
+use strict;
+use LWP::Simple;
+use LWP::UserAgent;
+use URI::Escape;
+use Time::Local;
+
+my ($message, $number) = (shift,shift);
+print "\nmsg $message no  $number";
+#use Digest::MD5 qw(md5 md5_hex md5_base64);
+#my $md5HashString = md5_hex("BIBLE|message=$message|number=$number|src=nagios");
+my $url = "http://www.unicel.in/SendSMS/sendmsg.php";
+#?message=$message&number=$number&checksum=$md5HashString";
+#my $FH;
+#open FH, ">>", "/var/tmp/nagios_sms.txt";
+open(FH, ">>/var/tmp/nagios_sms.txt");
+my $str = "\n" .  localtime() ." ". $number ."   ". $message;
+print FH $str;
+close(FH);
+my $browser = LWP::UserAgent->new;
+my $response = $browser->post($url, [dest => $number, msg => $message, send => "promo", uname => "user", pass => "password"]);
+#my $response = $browser->post($url, [number => $number, message => $message, checksum=> $md5HashString, src => "nagios"]);
+die "$url error: ", $response->status_line
+unless $response->is_success;
+print $response->content; 
+

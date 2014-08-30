@@ -1,0 +1,15 @@
+#!/bin/bash
+
+case "$1" in
+start)
+/usr/bin/perl /usr/local/bin/dequeue.pl start 
+;;
+stop)
+/usr/bin/perl /usr/local/bin/dequeue.pl stop
+;;
+*)
+    echo "Usage: $NAME {start|stop}" >&2
+    exit 1
+;;
+
+esac
