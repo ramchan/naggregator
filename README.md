@@ -22,5 +22,5 @@ The tool consists of below two queues:
 How to Setup
 ------
 
-setup/INSTALL has detailed instructuions.
+Please refer setup/INSTALL for detailed steps.
 
