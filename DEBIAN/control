@@ -1,9 +1,0 @@
-Package: _PACKAGE_
-Version: 1._VERSION_
-Architecture: amd64
-Section: flipkart/ops
-Priority: standard
-Depends: perl, perl-modules, fk-ops-servicebuilder,libmime-lite-perl, libyaml-tiny-perl, libcrypt-ssleay-perl, libdata-dump-perl, libxml-simple-perl
-Maintainer: Flipkart Sysops <sysadmin@flipkart.com> 
-Description: Aggregates nagios alerts to send batch messages
-
