@@ -1,6 +1,8 @@
 Naggregator
 ======
 
+Help
+
 Naggregator:  Nagios Aggregator is a tool to aggreagte alerts from Nagios.
 
 It helps to group alerts which have same semantics. It helps to reduce the number of alerts and increases the turnaround to attend to the problem.
