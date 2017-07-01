@@ -1,7 +1,7 @@
 Naggregator
 ======
 
-Help
+Helping
 
 Naggregator:  Nagios Aggregator is a tool to aggreagte alerts from Nagios.
 
